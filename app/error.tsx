@@ -1,5 +1,4 @@
-// pages/_error.js
-import React from 'react';
+"use client";
 
 const ErrorPage = ({ statusCode }: { statusCode: number }) => {
     return (
