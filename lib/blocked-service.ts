@@ -1,5 +1,5 @@
-import { db } from "./data";
-import { getSelf } from "./auth-service";
+import { db } from "@/lib/data";
+import { getSelf } from "@/lib/auth-service";
 
 export const isBlockedByUser = async (id: string) => {
     try {
@@ -11,14 +11,16 @@ export const isBlockedByUser = async (id: string) => {
         if(!otherUser) {
             throw new Error("User not found");
         }
-        if(self.id === otherUser.id) {
+        if (otherUser.id === self.id) {
             return false;
-        }
+          }
 
-        const existingBlock = await db.block.findFirst({
+        const existingBlock = await db.block.findUnique({
             where: {
-                blockerId: self.id,
-                blockedId: otherUser.id,
+                blockerId_blockedId: {
+                    blockerId: otherUser.id,
+                    blockedId: self.id,
+                },
             },
         });
         return !!existingBlock;
@@ -29,14 +31,16 @@ export const isBlockedByUser = async (id: string) => {
 
 export const blockUser = async (id: string) => {
     const self = await getSelf();
+
     const otherUser = await db.user.findUnique({
-        where: {id},
+        where: {id}
     });
+
     if(!otherUser) {
         throw new Error("User not found");
     }
 
-    if(self.id === otherUser.id) {
+    if(self.id === id) {
         throw new Error("Cannot block yourself");
     }
 
@@ -59,7 +63,7 @@ export const blockUser = async (id: string) => {
         },
         include:{
             blocked: true,
-        }
+        },
     });
     return block;
     
@@ -74,7 +78,7 @@ export const unblockUser = async (id: string) => {
         throw new Error("User not found");
     }
 
-    if(self.id === otherUser.id) {
+    if(self.id === id) {
         throw new Error("Cannot unblock yourself");
     }
 
@@ -106,7 +110,7 @@ export const getBlockedUsers = async () => {
 
     const blockedUsers = await db.block.findMany({
         where: {
-            blockedId: self.id,
+            blockerId: self.id,
         },
         include: {
             blocked: true,
