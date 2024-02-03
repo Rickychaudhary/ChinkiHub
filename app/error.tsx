@@ -1,25 +1,25 @@
 "use client";
 import React from 'react';
 
-const ErrorPage = ({ statusCode }) => {
-  return (
-    <div>
-      <p>
-        {statusCode
-          ? `An error ${statusCode} occurred on server`
-          : 'An error occurred on client'}
-      </p>
-    </div>
-  );
+const ErrorPage = ({ statusCode }: { statusCode: number }) => {
+    return (
+        <div>
+            <p>
+                {statusCode
+                    ? `An error ${statusCode} occurred on server`
+                    : 'An error occurred on client'}
+            </p>
+        </div>
+    );
 };
 
-ErrorPage.getInitialProps = ({ res, err }) => {
-  const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
+ErrorPage.getInitialProps = ({ res, err }: { res: any, err: { statusCode: number } }) => {
+    const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
 
-  // Log error details to the console
-  console.error(err);
+    // Log error details to the console
+    console.error(err);
 
-  return { statusCode };
+    return { statusCode };
 };
 
 export default ErrorPage;
