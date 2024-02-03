@@ -14,6 +14,7 @@ const ErrorPage = ({ statusCode }: { statusCode: number }) => {
 
 ErrorPage.getInitialProps = ({ res, err }: { res: any, err: any }) => {
     const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
+    console.error(err);
     return { statusCode };
 };
 
