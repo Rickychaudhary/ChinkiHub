@@ -4,14 +4,14 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
 const ErrorPage =() => {
+
+    console.log(`bsdk`, Error);
     return (
         <div className="h-full flex flex-col space-y-4 items-center justify-center text-muted-foreground">
             <p>Something went wrong.</p>
             <Button variant="secondary" asChild>
                 <Link href="/">
-                    Go back home
-                    console.log(`bsdk`, error);
-                    
+                    Go back home  
                 </Link>
             </Button>
         </div>
