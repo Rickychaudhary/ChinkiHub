@@ -1,21 +1,21 @@
-"use client";
+// pages/_error.js
+import React from 'react';
 
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-
-const ErrorPage =() => {
-
-    console.log(`bsdk`, Error);
+const ErrorPage = ({ statusCode }: { statusCode: number }) => {
     return (
-        <div className="h-full flex flex-col space-y-4 items-center justify-center text-muted-foreground">
-            <p>Something went wrong.</p>
-            <Button variant="secondary" asChild>
-                <Link href="/">
-                    Go back home  
-                </Link>
-            </Button>
+        <div>
+            <p>
+                {statusCode
+                    ? `An error ${statusCode} occurred on server`
+                    : 'An error occurred on client'}
+            </p>
         </div>
     );
+};
+
+ErrorPage.getInitialProps = ({ res, err }: { res: any, err: any }) => {
+    const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
+    return { statusCode };
 };
 
 export default ErrorPage;
