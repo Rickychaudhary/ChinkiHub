@@ -1,4 +1,4 @@
- 'use client';
+"use client";
  import { useSidebar } from "@/store/use-sidebar";
  import { cn } from "@/lib/utils";
  import { useState, useEffect } from "react";

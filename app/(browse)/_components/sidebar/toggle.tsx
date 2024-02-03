@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { useSidebar } from "@/store/use-sidebar";
 import { Button } from "@/components/ui/button";
 import { ArrowLeftFromLine, ArrowRightFromLine, LucideTable2 } from "lucide-react";

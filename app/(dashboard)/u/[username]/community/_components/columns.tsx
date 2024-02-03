@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { ArrowUpDown } from "lucide-react";
 import { ColumnDef } from "@tanstack/react-table";
