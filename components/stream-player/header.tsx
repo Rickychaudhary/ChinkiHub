@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useParticipants, useRemoteParticipant } from "@livekit/components-react";
 import { UserAvatar, UserAvatarSkeleton } from "@/components/user-avatar";

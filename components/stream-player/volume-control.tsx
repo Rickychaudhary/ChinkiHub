@@ -1,4 +1,4 @@
-"use clinet";
+"use client";
 
 import { Volume1, Volume2, VolumeX } from "lucide-react";
 import { Hint } from "@/components/hint";
