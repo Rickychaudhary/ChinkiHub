@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { startTransition, useTransition } from "react";
 import { onFollow, onUnfollow } from "@/actions/follow";
 import { toast } from "sonner";
-import { onblock, onUnblock } from "@/actions/block";
+import { onUnblock } from "@/actions/block";
 
 interface ActionsProps {
     isFollowing: boolean;
@@ -33,6 +33,7 @@ export const Actions = ({
             .catch(() => toast.error("Failed to follow!"));
         });
     };
+    
 
     const onclick = () => {
         if(isFollowing) {
@@ -43,11 +44,11 @@ export const Actions = ({
     }
     const handleBlock = () => {
         startTransition(() => {
-          onUnblock(userId)
-            .then((data) => toast.success(`Unblocked the user ${data.blocked.username}`))
-            .catch(() => toast.error("Something went wrong"));
-        });
-      };
+            onUnblock(userId)
+            .then((data) => toast.success(`You have blocked ${data.blocked.username}`))
+            .catch(() => toast.error("Failed to block!"));
+        })
+    }
 
     return (
        <>
