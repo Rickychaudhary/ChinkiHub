@@ -1,25 +1,21 @@
 "use client";
-import React from 'react';
 
-const ErrorPage = ({ statusCode }: { statusCode: number }) => {
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
+
+const ErrorPage =() => {
+
+    console.log(`bsdk`, Error);
     return (
-        <div>
-            <p>
-                {statusCode
-                    ? `An error ${statusCode} occurred on server`
-                    : 'An error occurred on client'}
-            </p>
+        <div className="h-full flex flex-col space-y-4 items-center justify-center text-muted-foreground">
+            <p>Something went wrong.</p>
+            <Button variant="secondary" asChild>
+                <Link href="/">
+                    Go back home  
+                </Link>
+            </Button>
         </div>
     );
-};
-
-ErrorPage.getInitialProps = ({ res, err }: { res: any, err: { statusCode: number } }) => {
-    const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
-
-    // Log error details to the console
-    console.error(err);
-
-    return { statusCode };
 };
 
 export default ErrorPage;
