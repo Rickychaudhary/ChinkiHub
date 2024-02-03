@@ -10,6 +10,8 @@ const ErrorPage =() => {
             <Button variant="secondary" asChild>
                 <Link href="/">
                     Go back home
+                    console.log(`bsdk`, error);
+                    
                 </Link>
             </Button>
         </div>
