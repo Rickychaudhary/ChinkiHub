@@ -34,7 +34,7 @@
     "livekit-client": "^1.15.4",
     "livekit-server-sdk": "^1.2.7",
     "lucide-react": "^0.316.0",
-    "next": "14.1.0",
+    "next": "^14.1.0",
     "next-themes": "^0.2.1",
     "query-string": "^8.1.0",
     "react": "^18",
@@ -49,6 +49,8 @@
     "zustand": "^4.5.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
